@@ -11,6 +11,7 @@ set -euxo pipefail
 ## ===
 
 # Get random project name from TYM namer service
+# Or let user specify as command-line argument
 if [ $# -eq 0 ]
   then
     DEFAULTVALUE=$(http -b https://us-central1-whereami-map.cloudfunctions.net/namer)
@@ -24,7 +25,7 @@ mkdir $PROJECT
 python -m venv --clear $PROJECT/.venv
 $PROJECT/.venv/bin/python -m pip install --upgrade pip wheel
 
-#
+# Set up empty README and dotenv files
 echo "# $PROJECT" > $PROJECT/README.md
 touch $PROJECT/.env
 chmod 0600 $PROJECT/.env
@@ -48,9 +49,10 @@ http -q -d https://raw.githubusercontent.com/github/gitignore/main/Python.gitign
   -o $PROJECT/.gitignore
 git init $PROJECT
 
+# activate the virtualenv
 set +eux
 source $PROJECT/.venv/bin/activate
 
-# cd into the project directory and activate the virtualenv
+# cd into the project directory and do an initial commit into git
 cd $PROJECT
 git add -A && git commit -m "Initial commit"
