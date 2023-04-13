@@ -23,11 +23,12 @@ mkdir $PROJECT
 
 # Create virtualenv in project directory, upgrade pip and install wheel
 python -m venv --clear $PROJECT/.venv
-$PROJECT/.venv/bin/python -m pip install --upgrade pip wheel
+$PROJECT/.venv/bin/python -m pip install --upgrade pip setuptools wheel
 
 # Set up empty README and dotenv files
 echo "# $PROJECT" > $PROJECT/README.md
 touch $PROJECT/.env
+echo "DATABASE_URL=sqlite:///" > $PROJECT/.env
 chmod 0600 $PROJECT/.env
 
 # Create dummy python file in project with function boilerplate
@@ -56,3 +57,4 @@ source $PROJECT/.venv/bin/activate
 # cd into the project directory and do an initial commit into git
 cd $PROJECT
 git add -A && git commit -m "Initial commit"
+
