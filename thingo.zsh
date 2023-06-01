@@ -22,8 +22,7 @@ PROJECT="${1:-$DEFAULTVALUE}"
 mkdir $PROJECT
 
 # Create virtualenv in project directory, upgrade pip and install wheel
-python -m venv --clear $PROJECT/.venv
-$PROJECT/.venv/bin/python -m pip install --upgrade pip setuptools wheel
+python -m venv --clear --upgrade-deps $PROJECT/.venv
 
 # Set up empty README and dotenv files
 echo "# $PROJECT" > $PROJECT/README.md
@@ -57,4 +56,3 @@ source $PROJECT/.venv/bin/activate
 # cd into the project directory and do an initial commit into git
 cd $PROJECT
 git add -A && git commit -m "Initial commit"
-
