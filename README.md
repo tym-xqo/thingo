@@ -3,7 +3,7 @@
 A wee shell script for getting started on wee Python scripts:
 
 - creates a new project directory directly under the current working directory
-- sets up a minimal virtual environment with `pip` upgraded and `wheel` installed
+- sets up a minimal virtual environment with `pip` upgraded to latest
 - downloads a standard Python `.gitignore` from GitHub
 - Adds a README.md file with the name of the project
 - Adds a barebones `thingo.py` with a single function
