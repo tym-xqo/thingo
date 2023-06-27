@@ -54,5 +54,7 @@ set +eux
 source $PROJECT/.venv/bin/activate
 
 # cd into the project directory and do an initial commit into git
+export ZSH_DOTENV_PROMPT=false
 cd $PROJECT
+unset ZSH_DOTENV_PROMPT
 git add -A && git commit -m "Initial commit"
