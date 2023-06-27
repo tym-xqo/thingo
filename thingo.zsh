@@ -22,7 +22,7 @@ PROJECT="${1:-$DEFAULTVALUE}"
 mkdir $PROJECT
 
 # Create virtualenv in project directory, upgrade pip and install wheel
-python -m venv --clear --upgrade-deps $PROJECT/.venv
+virtualenv $PROJECT/.venv
 
 # Set up empty README and dotenv files
 echo "# $PROJECT" > $PROJECT/README.md
